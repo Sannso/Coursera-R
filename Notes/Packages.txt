@@ -1,0 +1,53 @@
+PACKAGES:
+--------------------- Installing packages from CRAN through R/RStudio ----------------------
+
+	-------------  Installing from Bioconductor ---------------------
+
+		The BioConductor repository uses their own method to install packages. First, to get 				the basic functions required to install through BioConductor, use: source					("https://bioconductor.org/biocLite.R")
+
+		This makes the main install function of BioConductor, biocLite(), available to you. Following 			this, you call the package you want to install in quotes, between the parentheses of the 			biocLite command, like so: biocLite("GenomicFeatures")
+
+
+	------------- Installing from GitHub -------------------------------
+
+		This is a more specific case that you probably won’t run into too often. In the event you want 		to do this, you first must find the package you want on GitHub and take note of both the 			package name AND the author of the package. Check out this guide for installing from GitHub, 			but the general workflow is:
+
+		install.packages("devtools") - only run this if you don’t already have devtools installed. If 			you’ve been following along with this lesson, you may have installed it when we were 				practicing installations using the R console
+		library(devtools) - more on what this command is doing immediately below this
+		install_github("author/package") replacing “author” and “package” with their GitHub username 			and the name of the package.
+
+
+------------------- Loading packages --------------------
+
+	Installing a package does not make its functions immediately available to you. First you must load the 	package into R; to do so, use the library() function. Think of this like any other software you 		install on your computer. Just because you’ve installed a program, doesn’t mean it’s automatically 		running - you have to open the program. Same with R. You’ve installed it, but now you have to “open” 		it. For example, to “open” the “ggplot2” package, you would run:library(ggplot2)
+
+
+------------- Updating, removing, unloading packages ------------------------
+
+	Once you’ve got a package, there are a few things you might need to know how to do:
+
+	Checking what packages you have installed
+	If you aren’t sure if you’ve already installed a package, or want to check what packages are 		installed, you can use either of: installed.packages() or library() with nothing between the 		parentheses to check!
+
+	In RStudio, that package tab introduced earlier is another way to look at all of the packages you have 	installed.
+
+	----------- Updating packages ---------------
+
+		You can check what packages need an update with a call to the function old.packages() This 			will identify all packages that have been updated since you installed them/last updated them.
+
+		To update all packages, use update.packages(). If you only want to update a specific package, 			just use once again install.packages("packagename")
+
+	---------- Unloading packages ------------------
+
+		Sometimes you want to unload a package in the middle of a script - the package you have loaded 		may not play nicely with another package you want to use.
+
+		To unload a given package you can use the detach() function. For example, detach				("package:ggplot2", unload=TRUE) would unload the ggplot2 package (that we loaded earlier). 			Within the RStudio interface, in the Packages tab, you can simply unload a package by 				unchecking the box beside the package name.
+
+------------- Uninstalling packages ---------------------
+
+	If you no longer want to have a package installed, you can simply uninstall it using the function 		remove.packages(). For example, remove.packages("ggplot2")
+
+	(Try that, but then actually re-install the ggplot2 package - it’s a super useful plotting package!)
+
+	Within RStudio, in the Packages tab, clicking on the “X” at the end of a package’s row will uninstall 		that package.
+
